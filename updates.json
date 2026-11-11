@@ -42,5 +42,27 @@
         "browser_download_url": "https://github.com/Shadowargentum/Hispano-Ao-Actualizado/releases/download/v1.0.3/HispanoAo.zip"
       }
     ]
+  },
+  {
+    "tag_name": "v1.0.4",
+    "assets": [
+      {
+        "name": "Cliente.zip",
+        "size": 17357946,
+        "digest": "sha256:81cc4e80cfdf77e5133671aee9330079b82d9fbb387b2b9b459c7bc62af4e2f4",
+        "browser_download_url": "https://github.com/Shadowargentum/Hispano-Ao-Actualizado/releases/download/v1.0.4/Cliente.zip"
+      }
+    ]
+  },
+  {
+    "tag_name": "v1.0.5",
+    "assets": [
+      {
+        "name": "Cliente.zip",
+        "size": 17472772,
+        "digest": "sha256:82c84b2fa404bbdb60a4d22c39ea1957c2cd8b6ffab404aa0d4ededac7dd605a",
+        "browser_download_url": "https://github.com/Shadowargentum/Hispano-Ao-Actualizado/releases/download/v1.0.5/Cliente.zip"
+      }
+    ]
   }
 ]
