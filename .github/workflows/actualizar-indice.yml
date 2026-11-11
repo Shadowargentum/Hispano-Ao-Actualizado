@@ -1,0 +1,108 @@
+name: Actualizar indice de Hispano AO
+
+on:
+  release:
+    types: [published, edited, unpublished, deleted]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hispano-release-index
+  cancel-in-progress: false
+
+jobs:
+  publish-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Regenerar updates.json
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          python3 - <<'PY'
+          import base64
+          import json
+          import os
+          import re
+          from urllib.error import HTTPError
+          from urllib.parse import urlencode
+          from urllib.request import Request, urlopen
+
+
+          def build_index(releases):
+              index = {}
+              for release in releases:
+                  if release["draft"] or release["prerelease"]:
+                      continue
+                  tag = release["tag_name"]
+                  if not re.fullmatch(r"v?[0-9]+(?:\.[0-9]+){0,2}", tag, re.IGNORECASE):
+                      raise ValueError(f"Tag de version invalido: {tag}")
+                  version = tuple(int(part) for part in tag.lstrip("vV").split("."))
+                  version += (0,) * (3 - len(version))
+                  if version in index or max(version) > 2147483647:
+                      raise ValueError(f"Version repetida o fuera de rango: {tag}")
+
+                  zips = [asset for asset in release["assets"] if asset["name"].lower().endswith(".zip")]
+                  if len(zips) != 1:
+                      raise ValueError(f"{tag} debe tener exactamente un ZIP adjunto")
+                  asset = zips[0]
+                  digest = asset.get("digest") or ""
+                  if asset["state"] != "uploaded" or asset["size"] <= 0 or not re.fullmatch(r"sha256:[0-9a-f]{64}", digest):
+                      raise ValueError(f"ZIP incompleto o sin SHA-256 en {tag}")
+                  index[version] = {
+                      "tag_name": tag,
+                      "assets": [{key: asset[key] for key in ("name", "size", "digest", "browser_download_url")}],
+                  }
+              return (json.dumps([index[key] for key in sorted(index)], indent=2) + "\n").encode("utf-8")
+
+
+          def github(path, payload=None):
+              url = os.environ["GITHUB_API_URL"] + "/repos/" + os.environ["GITHUB_REPOSITORY"] + path
+              request = Request(url, headers={
+                  "Authorization": "Bearer " + os.environ["GH_TOKEN"],
+                  "Accept": "application/vnd.github+json",
+                  "X-GitHub-Api-Version": "2022-11-28",
+                  "Content-Type": "application/json",
+                  "User-Agent": "HispanoAO-ReleaseIndex",
+              }, method="PUT" if payload is not None else "GET")
+              with urlopen(request, None if payload is None else json.dumps(payload).encode(), timeout=30) as response:
+                  return json.load(response)
+
+
+          def publish_index():
+              releases = []
+              page = 1
+              while True:
+                  batch = github(f"/releases?per_page=100&page={page}")
+                  releases.extend(batch)
+                  if len(batch) < 100:
+                      break
+                  page += 1
+
+              data = build_index(releases)
+              branch = os.environ["GH_BRANCH"]
+              path = "/contents/updates.json"
+              payload = {
+                  "message": "Actualizar indice de Hispano AO",
+                  "branch": branch,
+                  "content": base64.b64encode(data).decode("ascii"),
+              }
+              try:
+                  current = github(path + "?" + urlencode({"ref": branch}))
+              except HTTPError as error:
+                  if error.code != 404:
+                      raise
+              else:
+                  if base64.b64decode(current["content"]) == data:
+                      print("El indice ya esta actualizado")
+                      return
+                  payload["sha"] = current["sha"]
+              github(path, payload)
+              print("Indice publicado")
+
+
+          if __name__ == "__main__":
+              publish_index()
+          PY
