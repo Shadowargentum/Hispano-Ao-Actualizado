@@ -1,0 +1,35 @@
+[
+  {
+    "tag_name": "v1.0.0",
+    "assets": [
+      {
+        "name": "Hispano-AO-v1.0.0.zip",
+        "size": 95710518,
+        "digest": "sha256:09b451583fcef495e1eeccee97ff1f7d19a4ef5d1da638f9c09e934a7a7d8a43",
+        "browser_download_url": "https://github.com/Shadowargentum/Hispano-Ao-Actualizado/releases/download/v1.0.0/Hispano-AO-v1.0.0.zip"
+      }
+    ]
+  },
+  {
+    "tag_name": "v1.0.1",
+    "assets": [
+      {
+        "name": "HispanoAo.zip",
+        "size": 4151879,
+        "digest": "sha256:cc147f445a81c8c375085c73fb1de837b628cad5907ea6c8be53177ed1e828b1",
+        "browser_download_url": "https://github.com/Shadowargentum/Hispano-Ao-Actualizado/releases/download/v1.0.1/HispanoAo.zip"
+      }
+    ]
+  },
+  {
+    "tag_name": "v1.0.2",
+    "assets": [
+      {
+        "name": "INIT.zip",
+        "size": 265385,
+        "digest": "sha256:29497ffe0dd953358579849ad76e397a470448fd99ce6951af733736f6b574fa",
+        "browser_download_url": "https://github.com/Shadowargentum/Hispano-Ao-Actualizado/releases/download/v1.0.2/INIT.zip"
+      }
+    ]
+  }
+]
