@@ -108,5 +108,16 @@
         "browser_download_url": "https://github.com/Shadowargentum/Hispano-Ao-Actualizado/releases/download/v1.0.9/cliente.zip"
       }
     ]
+  },
+  {
+    "tag_name": "v1.0.10",
+    "assets": [
+      {
+        "name": "HispanoAo.zip",
+        "size": 5415898,
+        "digest": "sha256:ab7a5aea24f42f07b5695f5e48988b1f3d3c25ec5d81cdd3962dcef1cca16013",
+        "browser_download_url": "https://github.com/Shadowargentum/Hispano-Ao-Actualizado/releases/download/v1.0.10/HispanoAo.zip"
+      }
+    ]
   }
 ]
