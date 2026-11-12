@@ -97,5 +97,16 @@
         "browser_download_url": "https://github.com/Shadowargentum/Hispano-Ao-Actualizado/releases/download/v1.0.8/HispanoAo.zip"
       }
     ]
+  },
+  {
+    "tag_name": "v1.0.9",
+    "assets": [
+      {
+        "name": "Nueva.carpeta.zip",
+        "size": 5666362,
+        "digest": "sha256:eb06f661b8dc731e901abb6e093c59c6e07bb724f3e34900a0753efe53e9e684",
+        "browser_download_url": "https://github.com/Shadowargentum/Hispano-Ao-Actualizado/releases/download/v1.0.9/Nueva.carpeta.zip"
+      }
+    ]
   }
 ]
