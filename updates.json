@@ -262,5 +262,16 @@
         "browser_download_url": "https://github.com/Shadowargentum/Hispano-Ao-Actualizado/releases/download/v1.0.23/OlympusAO.zip"
       }
     ]
+  },
+  {
+    "tag_name": "v1.0.24",
+    "assets": [
+      {
+        "name": "OlympusAO.zip",
+        "size": 5429690,
+        "digest": "sha256:ed733ead23284523c4bd9051a20a661568d5eaa9b844f126c82cad075ccff95b",
+        "browser_download_url": "https://github.com/Shadowargentum/Hispano-Ao-Actualizado/releases/download/v1.0.24/OlympusAO.zip"
+      }
+    ]
   }
 ]
