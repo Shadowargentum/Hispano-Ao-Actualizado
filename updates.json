@@ -295,5 +295,16 @@
         "browser_download_url": "https://github.com/Shadowargentum/Hispano-Ao-Actualizado/releases/download/v1.0.26/OlympusAO.zip"
       }
     ]
+  },
+  {
+    "tag_name": "v1.0.27",
+    "assets": [
+      {
+        "name": "Nueva.carpeta.zip",
+        "size": 5122115,
+        "digest": "sha256:227b60d3dfece5b478e9b0e41f71846195557b725fbc1d62bcef60179bc0bdc7",
+        "browser_download_url": "https://github.com/Shadowargentum/Hispano-Ao-Actualizado/releases/download/v1.0.27/Nueva.carpeta.zip"
+      }
+    ]
   }
 ]
