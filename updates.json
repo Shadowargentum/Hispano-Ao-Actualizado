@@ -317,5 +317,16 @@
         "browser_download_url": "https://github.com/Shadowargentum/Hispano-Ao-Actualizado/releases/download/v1.0.28/OlympusAO.zip"
       }
     ]
+  },
+  {
+    "tag_name": "v1.0.29",
+    "assets": [
+      {
+        "name": "Mapas.zip",
+        "size": 402148,
+        "digest": "sha256:717d2f47b98a08cb0e9ceb03ee1b325dda6a82497494f7deb3ab2b8800435055",
+        "browser_download_url": "https://github.com/Shadowargentum/Hispano-Ao-Actualizado/releases/download/v1.0.29/Mapas.zip"
+      }
+    ]
   }
 ]
